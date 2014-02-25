@@ -1,0 +1,31 @@
+  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org    /TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>My Locator</title>
+        <script type="text/javascript" charset="utf-8" src="../plugins/phonegap-1.1.0.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+                navigator.geolocation.getCurrentPosition(onSuccess,Error);
+            }
+        function onSuccess(position) {
+                var element = document.getElementById('geolocation');
+            element.innerHTML = 'Latitude: ' + position.coords.latitude 
+                + '<br />' + 'Longitude: ' + position.coords.longitude 
+                + '<br />' + 'Accuracy: ' + position.coords.accuracy 
+                + '<br />' + 'Timestamp: ' + new Date(position.timestamp)  + '<br />';
+
+            }
+        function onError(error) {
+                alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+            }
+
+        </script>
+    </head>
+    <body>
+        <p id="geolocation">
+            Finding geolocation...
+        </p>
+    </body>
+</html>
